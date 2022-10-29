@@ -1,7 +1,7 @@
 <script>
     var preview_source = "https://drive.google.com/uc?export=download&id=1rzI0Idh-ytlk3l5_7nKX1AnrPlms5bZp";
     var usdz_url = "https://drive.google.com/uc?export=download&id=1XZjmyYpZF1425p3LK2nPz4HBgN83gdo1";
-    var glb_url = "";
+    var glb_url = "https://noxatra.ru/experiments/usdz-glb-test/ppkin.glb";
 
 	var isMobile = {
         Android: function () {
@@ -41,7 +41,7 @@
                 "<img src='" + preview_source + "' class='App-mobile-preview' />" +
                 "<button>" + 
                      icon + 
-                    "View in your space" +
+                    "Посмотреть" +
                 "</button>" +
             "</a>" +
             "</div>";
@@ -60,7 +60,6 @@
                 "</button>" +
             "</div>"
         }
-    
     }
 
     document.getElementById('usdz-glb-container').innerHTML = content;
