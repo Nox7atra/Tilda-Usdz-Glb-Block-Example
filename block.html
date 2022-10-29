@@ -1,0 +1,130 @@
+<script>
+    var preview_source = "https://drive.google.com/uc?export=download&id=1rzI0Idh-ytlk3l5_7nKX1AnrPlms5bZp";
+    var usdz_url = "https://drive.google.com/uc?export=download&id=1XZjmyYpZF1425p3LK2nPz4HBgN83gdo1";
+    var glb_url = "";
+
+	var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/Miui/i);
+        },
+        BlackBerry: function () {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function () {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function () {
+            return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    }
+	function OpenUrl() {
+        window.open(model_url);
+    };
+</script>
+
+<div id="usdz-glb-container">
+    
+</div>
+
+<script>
+    let content = "";
+	let icon = "<img src='https://drive.google.com/uc?export=download&id=1QIDYd6xRp-k10WBAXZ-UZx3zdw2hdaP1' class='App-ar-icon'  />";
+    if(isMobile.iOS()){
+        content = "<div>" + 
+            "<a href="+ usdz_url + " rel='ar' class='App-mobile'>" + 
+                "<img src='" + preview_source + "' class='App-mobile-preview' />" +
+                "<button>" + 
+                     icon + 
+                    "View in your space" +
+                "</button>" +
+            "</a>" +
+            "</div>";
+    }
+    else{
+        if(isMobile.Android()){
+            console.log(glb_url)
+            var model_url = "intent://arvr.google.com/scene-viewer/1.0?file=" +
+            glb_url + 
+            "#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;";
+            content = "<div class='App-mobile'>" + 
+                "<img src=" + preview_source + " class='App-mobile-preview'/>" +
+                "<button onClick='OpenUrl()'>" + 
+				icon + 
+                    "Посмотреть" +
+                "</button>" +
+            "</div>"
+        }
+    
+    }
+
+    document.getElementById('usdz-glb-container').innerHTML = content;
+</script>
+
+<style>
+
+button{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  padding: 20px;
+  font-weight: bold;
+  border: 1px solid #c4c4c4;
+  border-radius: 30px;
+  box-shadow: 0px 2px 5px #c4c4c4;
+}
+button:hover{
+  background-color: #c4c4c4;
+  color: white;
+}
+button:focus{
+  background-color: #c4c4c4;
+  color: white;
+}
+.App-mobile{
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.App-desktop{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-ar-icon{
+  height: 25px;
+  padding-right: 10px;
+}
+.App-desktop-text{
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  padding: 60px 40px 40px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px gray;
+}
+.App-desktop-preview{
+  width: 40vw;
+  padding-right: 100px;
+}
+.App-mobile-preview{
+  height: 50vh;
+  margin-bottom: 0px;
+}
+
+</style>
